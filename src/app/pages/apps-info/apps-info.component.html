@@ -1,0 +1,119 @@
+
+ 
+
+  
+
+ 
+
+      <div class="h-divider"></div>
+
+
+
+
+ 
+
+
+<main>
+
+
+
+
+  <!-- Section 1 -->
+<section class="py-5 bg-light">
+  <div class="container-xxl">
+    <h1>Welcome to my New Routed Angular Website</h1>
+    <p class="lead">This menu is now faster, smoother, and more touch-friendly.</p>
+    <p>Add general overview notes here.</p>
+  </div>
+</section>
+
+<!-- Section 2 (target for the icon link) -->
+<section id="section2" class="py-5 bg-dark text-white">
+  <div class="container-xl">
+    <h2 class="mb-4 d-flex align-items-center gap-2">
+      Image Carousel - Angular Integration Notes
+     
+    </h2>
+
+    <div class="row g-4 align-items-start">
+      <!-- Left: Image -->
+      <div class="col-12 col-md-3">
+        
+          <img
+  src="assets/app-inf-img/api-call.png"
+  alt="Angular ? PHP API call workflow"
+  class="img-fluid border border-secondary p-2 rounded-2 fade-in-img"
+/>     
+
+       
+      </div>
+
+    
+      <div class="col-12 col-md-9">
+        <h5 class="mb-2">Build Techniques</h5>
+        <p class="lead mb-4">
+          This carousel displays a scrolling row of images fetched from a PHP API. It works across desktop and mobile,
+          supports touch gestures, and includes a built-in lightbox viewer.
+        </p>
+
+        <h6 class="mb-2">How it Works</h6>
+        <div class="mb-3">
+          <strong>Data Source</strong>
+          <ul class="mb-3 list-unstyled ps-3">
+            <li>Images are stored on the server and listed by a PHP script (<code>carousel_api.php</code>).</li>
+            <li>The script takes a category (e.g. <code>?category=ai</code>) and returns an array of image URLs (JSON).</li>
+          </ul>
+
+          <strong>API Calls from Angular</strong>
+          <ul class="mb-3 list-unstyled ps-3">
+            <li>Angular <code>ApiService</code> requests the PHP script with <code>HttpClient</code>.</li>
+            <li><code>proxy.conf.json</code> is used in local dev so calls like <code>/api/carousel_api.php</code> avoid CORS.</li>
+          </ul>
+
+         
+
+          
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+
+  
+</section>
+
+
+<!-- Section 3 -->
+<section class="py-5 bg-success text-white">
+  <div class="container-xxl">
+    <h2 class="mb-3">Deployment</h2>
+    <p>Notes on local dev vs server, proxy removal in prod, same-origin setup.</p>
+  </div>
+</section>
+
+<!-- Section 4 -->
+<section class="py-5 bg-dark text-white">
+  <div class="container-xxl">
+    <h2 class="mb-3">Optimisation</h2>
+    <p>Lazy loading images, caching headers on uploads, minimal bundle tips.</p>
+  </div>
+</section>
+
+<!-- Section 5 -->
+<section class="py-5 bg-warning">
+  <div class="container-xxl">
+    <h2 class="mb-3">Future Ideas</h2>
+    <p>Lightbox refinements, read-only DB user via panel, markdown docs, etc.</p>
+  </div>
+</section>
+
+
+
+
+
+
+</main>
+
+
+

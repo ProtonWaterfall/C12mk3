@@ -1,0 +1,26 @@
+.hex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  background-color: #111;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.hex {
+  width: 80px;
+  height: 69px;
+  margin: 4px;
+  background: #00ffff;
+  clip-path: polygon(
+    50% 0%,
+    93% 25%,
+    93% 75%,
+    50% 100%,
+    7% 75%,
+    7% 25%
+  );
+  opacity: 1;
+  transform: scale(1);
+}

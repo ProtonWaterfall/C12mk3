@@ -1,0 +1,56 @@
+<!-- Top Navbar -->
+<nav id="topNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <div class="container-xxl">
+    <a class="navbar-brand" routerLink="/">Logo</a>
+
+    <button class="navbar-toggler" type="button" id="menuToggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a></li>
+        
+<li class="nav-item"><a class="nav-link" routerLink="/resources" routerLinkActive="active">Resources</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="projectsDropdown" data-bs-toggle="dropdown" aria-expanded="false" (click)="$event.preventDefault()">
+            Projects
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end mt-2 shadow-sm">
+            <li><a class="dropdown-item" routerLink="/solar">The Planets</a></li>
+            <li><a class="dropdown-item" routerLink="/khao-lak">Khao Lak</a></li>
+            <li><a class="dropdown-item" routerLink="/forge">Forge</a></li>
+            <li><a class="dropdown-item" href="#" onclick="passwordProtect('https://central12.com/nuxtproj/')">Nuxt Project</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" routerLink="/blog" routerLinkActive="active">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Side Menu -->
+<aside class="side-menu" id="sideMenu">
+  <ul class="list-unstyled w-100">
+    <li><a class="side-link" routerLink="/" routerLinkActive="active">Home</a></li>
+    <li><a class="side-link" routerLink="/contact" routerLinkActive="active">Contact</a></li>
+    <li><a class="side-link" routerLink="/resources" routerLinkActive="active">Resources</a></li>
+
+    <li class="accordion-item">
+      <button class="accordion-toggle side-link">Projects</button>
+      <ul class="accordion-content list-unstyled mt-1">
+        <li><a class="side-sublink" routerLink="/solar">The Planets</a></li>
+        <li><a class="side-sublink" routerLink="/khao-lak">Khao Lak</a></li>
+        <li><a class="side-sublink" routerLink="/forge">Forge</a></li>
+        <li><a class="side-sublink" href="#" onclick="passwordProtect('https://central12.com/nuxtproj/')">Nuxt Project</a></li>
+      </ul>
+    </li>
+
+    <li><a class="side-link" routerLink="/blog" routerLinkActive="active">Blog</a></li>
+  </ul>
+</aside>
+
+<div id="overlay"></div>

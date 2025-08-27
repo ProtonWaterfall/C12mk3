@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://central12.com/php",
+    "changeOrigin": true,
+    "secure": true,
+    "pathRewrite": { "^/api": "" }
+  }
+}

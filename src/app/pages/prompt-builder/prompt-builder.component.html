@@ -1,0 +1,199 @@
+<form [formGroup]="form">
+  <div class="pb-wrap">
+    <h2>Prompt Builder <span class="badge">v2</span></h2>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="left">
+        <button type="button" class="btn" (click)="applyPreset('portrait')">Preset: Portrait</button>
+        <button type="button" class="btn" (click)="applyPreset('product')">Preset: Product</button>
+        <button type="button" class="btn" (click)="applyPreset('space')">Preset: Space Scene</button>
+      </div>
+      <div class="right">
+        <button type="button" class="btn ghost" (click)="undo()" title="Ctrl/Cmd+Z">Undo</button>
+        <button type="button" class="btn ghost" (click)="redo()" title="Ctrl/Cmd+Y">Redo</button>
+        <button type="button" class="btn" (click)="copyShareLink()" title="Copy sharable URL">Share</button>
+        <button type="button" class="btn warn" (click)="reset()">Reset</button>
+      </div>
+    </div>
+
+    <!-- SUBJECT -->
+    <section class="pb-section">
+      <h3>1) Subject & Context</h3>
+      <div class="grid-2">
+        <label>
+          <span>Main subject (noun)</span>
+          <input
+            type="text"
+            class="inp"
+            formControlName="subjectNoun"
+            placeholder="e.g., lone astronaut, red fox, premium wristwatch"
+          />
+          <small class="hint">Keep it short and concrete; this anchors the image.</small>
+        </label>
+
+        <label>
+          <span>Subject detail</span>
+          <input
+            type="text"
+            class="inp"
+            formControlName="subjectDetail"
+            placeholder="e.g., reflective visor, moss-covered, engraved bezel"
+          />
+          <small class="hint">Material, texture, attributes to steer rendering.</small>
+        </label>
+      </div>
+
+      <label class="mt-8">
+        <span>Scene context</span>
+        <input
+          type="text"
+          class="inp"
+          formControlName="sceneContext"
+          placeholder="e.g., cliff under twin moons; studio backdrop; foggy pine forest"
+        />
+        <small class="hint">Where/when; adds story without overspecifying.</small>
+      </label>
+    </section>
+
+    <!-- COMPOSITION -->
+    <section class="pb-section">
+      <h3>2) Composition</h3>
+      <div class="grid-2">
+        <label>
+          <span>Viewpoint (multi)</span>
+          <select multiple class="sel" formControlName="viewpoint">
+            <option *ngFor="let o of viewpoints" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">Angle/perspective (power, intimacy, overview).</small>
+        </label>
+
+        <label>
+          <span>Framing (multi)</span>
+          <select multiple class="sel" formControlName="framing">
+            <option *ngFor="let o of framings" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">Aspect and placement (portrait, wide, symmetry).</small>
+        </label>
+      </div>
+    </section>
+
+    <!-- STYLE -->
+    <section class="pb-section">
+      <h3>3) Style & Medium</h3>
+      <label>
+        <span>Styles (multi)</span>
+        <select multiple class="sel" formControlName="styles">
+          <option *ngFor="let o of styles" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+        </select>
+        <small class="hint">Rendering approach (photo, painting, CGI, etc.).</small>
+      </label>
+    </section>
+
+    <!-- LIGHT & MOOD -->
+    <section class="pb-section">
+      <h3>4) Lighting & Mood</h3>
+      <div class="grid-2">
+        <label>
+          <span>Lighting (multi)</span>
+          <select multiple class="sel" formControlName="lighting">
+            <option *ngFor="let o of lights" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">Light quality & direction; shapes form and texture.</small>
+        </label>
+
+        <label>
+          <span>Mood (multi)</span>
+          <select multiple class="sel" formControlName="mood">
+            <option *ngFor="let o of moods" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">Emotional tone (serene, epic, ominous, etc.).</small>
+        </label>
+      </div>
+    </section>
+
+    <!-- COLOR & TEXTURE -->
+    <section class="pb-section">
+      <h3>5) Color & Texture</h3>
+      <div class="grid-2">
+        <label>
+          <span>Palette (multi)</span>
+          <select multiple class="sel" formControlName="palette">
+            <option *ngFor="let o of palettes" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">Global color strategy (vibrant, muted, B/W).</small>
+        </label>
+
+        <label>
+          <span>Texture / Detail (multi)</span>
+          <select multiple class="sel" formControlName="texture">
+            <option *ngFor="let o of textures" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">Surface feel and detail density.</small>
+        </label>
+      </div>
+    </section>
+
+    <!-- EFFECTS & QUALITY -->
+    <section class="pb-section">
+      <h3>6) Effects & Quality</h3>
+      <div class="grid-2">
+        <label>
+          <span>Effects (multi)</span>
+          <select multiple class="sel" formControlName="effects">
+            <option *ngFor="let o of effects" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">Atmosphere & motion cues (bokeh, fog, etc.).</small>
+        </label>
+
+        <label>
+          <span>Quality directives (multi)</span>
+          <select multiple class="sel" formControlName="quality">
+            <option *ngFor="let o of qualityOpts" [value]="o.value" [title]="o.desc">{{ o.label }}</option>
+          </select>
+          <small class="hint">General guidance to reduce model ambiguity.</small>
+        </label>
+      </div>
+    </section>
+
+    <!-- NOTES -->
+    <section class="pb-section">
+      <h3>7) Notes</h3>
+      <div class="grid-2">
+        <label>
+          <span>Negative prompts (avoid)</span>
+          <input
+            type="text"
+            class="inp"
+            formControlName="negativePrompts"
+            placeholder="e.g., blur, extra fingers, watermark, low-res"
+          />
+          <small class="hint">Tell the model what *not* to do.</small>
+        </label>
+
+        <label>
+          <span>Custom notes</span>
+          <input
+            type="text"
+            class="inp"
+            formControlName="customNotes"
+            placeholder="Extra guidance or constraints"
+          />
+          <small class="hint">Any extra phrasing you rely on.</small>
+        </label>
+      </div>
+    </section>
+
+    <!-- OUTPUT -->
+    <section class="pb-section">
+      <h3>Output</h3>
+      <div class="out-head">
+        <div class="muted">Words: {{ wordCount() }}</div>
+        <div class="btns">
+          <button type="button" class="btn" (click)="copyPrompt()">Copy Prompt</button>
+        </div>
+      </div>
+      <textarea class="out" [value]="prompt()" readonly></textarea>
+    </section>
+  </div>
+</form>

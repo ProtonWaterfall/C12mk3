@@ -1,0 +1,86 @@
+/* Outer */
+.c12-wrap { margin: 2rem 0; }
+.c12-title { margin-bottom: 1rem; }
+
+/* Controls */
+.c12-controls {
+  display: flex; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 12px;
+}
+.c12-btn {
+  border: 1px solid #ccc; color: #ccc; background: transparent; padding: .4rem .8rem; cursor: pointer; border-radius: 6px;
+}
+
+/* Track & cards (no Bootstrap needed) */
+.c12-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; // Firefox
+}
+.c12-track::-webkit-scrollbar { display: none; } // WebKit
+
+.c12-card {
+  min-width: 200px;
+  max-width: 220px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; border:1px solid #333; padding:6px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #212529;
+}
+.c12-card img {
+  width: 100%;
+  height: 300px; border-radius: 6px;
+  object-fit: cover;    /* prevents squashing */
+  display: block;
+  cursor: pointer;
+}
+
+/* Fade-in */
+.fade-in-img {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+  background-color: #000;
+}
+.fade-in-img.loaded {
+  visibility: visible;
+  opacity: 1;
+  background-color: #000;
+}
+
+/* Lightbox */
+.lightbox-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+}
+.lightbox-image {
+  max-width: 90%;
+  max-height: 90%;
+  transition: transform 0.3s ease-in-out;
+  cursor: zoom-in;
+}
+.lightbox-image.zoomed {
+  max-width: none; max-height: none;
+  width: auto; height: auto;
+  cursor: zoom-out;
+  transform: scale(1.6);
+}
+.lightbox-close,
+.lightbox-nav {
+  position: fixed;
+  z-index: 10000;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+.lightbox-close { top: 20px; right: 30px; }
+.lightbox-nav.prev { left: 30px; top: 50%; transform: translateY(-50%); }
+.lightbox-nav.next { right: 30px; top: 50%; transform: translateY(-50%); }

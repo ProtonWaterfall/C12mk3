@@ -1,0 +1,43 @@
+<div class="c12-wrap text-white">
+  <!-- Link to apps_info (Section 2) -->
+  <div class="c12-header"><h2>Just some GPT Images <a [routerLink]="['/apps_info']" [queryParams]="{ section: 2 }" title="Build notes">
+      <i class="icon-small bi bi-box-arrow-up-right"></i>
+    </a></h2> 
+    
+  </div>
+
+  <!-- Controls -->
+  <div class="c12-controls">
+    <button type="button" class="c12-btn" (click)="scroll(-240)">&#8592;</button>
+    <button type="button" class="c12-btn" (click)="scroll(240)">&#8594;</button>
+  </div>
+
+  <!-- Track -->
+ <div class="c12-track" #scrollEl>
+  <div class="c12-card" *ngFor="let img of images; let i = index">
+    <img
+      [src]="img.url"
+      [alt]="'Image ' + img.id"
+      [ngClass]="{ 'fade-in-img': true, 'loaded': loaded[i] }"
+      loading="lazy"
+      (load)="onLoad(i)"
+      (click)="open(i)"
+    />
+    
+  </div>
+</div>
+
+  <!-- Lightbox -->
+  <ng-container *ngIf="lightboxIndex !== null">
+    <div class="lightbox-backdrop" (click)="zoomed=false">
+      <img
+        [src]="images[lightboxIndex!]?.url"        [alt]="'Full image ' + (lightboxIndex! + 1)"
+        [ngClass]="{ 'lightbox-image': true, 'zoomed': zoomed }"
+        (click)="toggleZoom($event)"
+      />
+    </div>
+    <div class="lightbox-close" (click)="close()">&times;</div>
+    <div class="lightbox-nav prev" (click)="$event.stopPropagation(); prev()">&#10094;</div>
+    <div class="lightbox-nav next" (click)="$event.stopPropagation(); next()">&#10095;</div>
+  </ng-container>
+</div>

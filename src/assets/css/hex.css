@@ -1,0 +1,67 @@
+.hexagon-line {
+    display: grid; /* Use grid for more control over placement */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Automatically fill rows with hexagons */
+    grid-auto-rows: calc(100px * 1.1); /* Set the row height to match hexagon height (86.6% of width) */
+    grid-auto-flow: dense; /* Fill in the grid densely to avoid gaps */
+    
+    width: 100vw; /* Full viewport width */
+    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+    row-gap: 5px; /* Add gap between rows (height-based gap only) */
+
+}
+
+.hex, .hex-alt {
+    width: 100px; /* Fixed width for hexagon */
+    height: calc(100px * 1.1); /* Height for hexagonal shape */
+    background-color: #89CFF0; /* Hexagon color */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Hexagon shape */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Fade transition */
+}
+
+.hex.show, .hex-alt.show {
+    opacity: 1; /* Fully visible when shown */
+}
+
+.hex-alt {
+    background-color: #89CFF0; /* Alternate color */
+}
+
+.glow {
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.7), 0 0 30px rgba(52, 152, 219, 0.5);
+    animation: glow-animation 1.5s infinite alternate;
+}
+
+@keyframes glow-animation {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.6;
+    }
+}
+
+
+/* Mobile adjustment: Limit rows to 2 on smaller screens */
+@media (max-width: 600px) {
+    .hexagon-line {
+        max-height: calc((100px * 1.1 + 5px) * 2); /* Limit to 2 rows, including row gap */
+        overflow: hidden; /* Hide excess hexagons */
+    }
+}
+
+
+/* Optional: Hover effect */
+.tel:hover {
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --silver: #c0c0c0;
+  --light-shadow: #77571d;
+  --dark-shadow: #3e2904;
+}
